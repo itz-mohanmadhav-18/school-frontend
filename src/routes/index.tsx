@@ -6,12 +6,16 @@ import { LoginPage } from "@/pages/LoginPage";
 import { useAuth } from "@/hooks/useAuth";
 import { getRoutesForUser } from "@/utils/routeMapper";
 
-export const AppRoutes: React.FC = () => {
-    const { user } = useAuth();
 
+export const AppRoutes: React.FC = () => {
+    const { user, isLoading } = useAuth();
+    if (isLoading) {
+        return <div>Loading...</div>; // Show a loading state while auth is being checked
+    }
     // If not authenticated, all routes should be accessible but protected
     const userRole = user?.role || 'student';
     const userRoutes = getRoutesForUser(userRole);
+
 
     return (
         <Routes>
