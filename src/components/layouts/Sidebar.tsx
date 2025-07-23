@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Sidebar,
@@ -11,37 +11,53 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   useSidebar,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
 import { useAuth } from '@/hooks/useAuth';
-import { getNavigationByRole } from '@/routes/navigationConfig';
-import { ChevronRight, GraduationCap, LogOut } from 'lucide-react';
+import { getNavigationByRole, type NavigationItem } from '@/routes/navigationConfig';
+import { ChevronDown, ChevronRight, GraduationCap, LogOut } from 'lucide-react';
 
 // Utility function for active link detection
 const isActiveLink = (currentPath: string, targetPath: string): boolean => {
   if (targetPath === '/dashboard' && currentPath === '/') {
     return true;
   }
-  
+
   if (targetPath === currentPath) {
     return true;
   }
-  
+
   if (targetPath !== '/' && currentPath.startsWith(targetPath)) {
     return true;
   }
-  
+
   return false;
+};
+
+// Check if any subitem is active
+const hasActiveSubItem = (item: NavigationItem, currentPath: string): boolean => {
+  if (!item.subItems) return false;
+  return item.subItems.some(subItem => isActiveLink(currentPath, subItem.path));
 };
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
   const { user, logout } = useAuth();
-  const { state, isMobile, toggleSidebar } = useSidebar();
+  const { state, isMobile, toggleSidebar, setOpenMobile } = useSidebar();
+  // Changed from array to single string to only allow one expanded item
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
   if (!user) {
     return null;
@@ -51,28 +67,68 @@ export const AppSidebar: React.FC = () => {
   const mainNavigationItems = navigationItems.filter(item => item.path !== '/settings');
   const settingsItem = navigationItems.find(item => item.path === '/settings');
 
-  // Helper component for menu items with tooltips when collapsed
-  const MenuItem = ({ item }: { item: any }) => {
-    const menuButton = (
-      <SidebarMenuButton 
-        asChild 
-        isActive={isActiveLink(location.pathname, item.path)}
-      >
-        <Link to={item.path} className="flex items-center space-x-2">
-          <item.icon className="h-4 w-4" />
-          {/* Show text on mobile or when expanded */}
-          {(isMobile || state === 'expanded') && <span>{item.title}</span>}
-        </Link>
-      </SidebarMenuButton>
-    );
+  const handleNavigationClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
-    // Only show tooltips on desktop when collapsed
+  // Modified to only allow one expanded item at a time
+  const toggleExpanded = (path: string) => {
+    setExpandedItem(prev => prev === path ? null : path);
+  };
+
+  // Helper component for menu items with tooltips when collapsed
+  const MenuItem = ({ item }: { item: NavigationItem }) => {
+    const hasSubItems = item.subItems && item.subItems.length > 0;
+    const isExpanded = expandedItem === item.path; // Changed condition
+    const isActive = isActiveLink(location.pathname, item.path);
+    const hasActiveSub = hasActiveSubItem(item, location.pathname);
+
+    // If collapsed and has subitems, show tooltip with subitems
+    if (!isMobile && state === 'collapsed' && hasSubItems) {
+      return (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <SidebarMenuButton
+                asChild
+                isActive={isActive || hasActiveSub}
+              >
+                <Link to={item.path} onClick={handleNavigationClick} className="flex items-center space-x-2">
+                  <item.icon className="h-4 w-4" />
+                </Link>
+              </SidebarMenuButton>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="font-medium">
+              <div className="space-y-1">
+                <div className="font-semibold">{item.title}</div>
+                {item.subItems?.map((subItem) => (
+                  <div key={subItem.path} className="text-sm text-muted-foreground">
+                    • {subItem.title}
+                  </div>
+                ))}
+              </div>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      );
+    }
+
+    // If collapsed and no subitems, show simple tooltip
     if (!isMobile && state === 'collapsed') {
       return (
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              {menuButton}
+              <SidebarMenuButton
+                asChild
+                isActive={isActive}
+              >
+                <Link to={item.path} onClick={handleNavigationClick} className="flex items-center space-x-2">
+                  <item.icon className="h-4 w-4" />
+                </Link>
+              </SidebarMenuButton>
             </TooltipTrigger>
             <TooltipContent side="right" className="font-medium">
               {item.title}
@@ -82,7 +138,62 @@ export const AppSidebar: React.FC = () => {
       );
     }
 
-    return menuButton;
+    // Expanded or mobile view with dropdown functionality
+    if (hasSubItems) {
+      return (
+        <Collapsible
+          open={isExpanded}
+          onOpenChange={() => toggleExpanded(item.path)}
+        >
+          <CollapsibleTrigger asChild>
+            <SidebarMenuButton
+              className="w-full justify-between"
+              isActive={isActive || hasActiveSub}
+            >
+              <div className="flex items-center space-x-2">
+                <item.icon className="h-4 w-4" />
+                <span>{item.title}</span>
+              </div>
+              {isExpanded ? (
+                <ChevronDown className="h-4 w-4" />
+              ) : (
+                <ChevronRight className="h-4 w-4" />
+              )}
+            </SidebarMenuButton>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <SidebarMenuSub>
+              {item.subItems?.map((subItem) => (
+                <SidebarMenuSubItem key={subItem.path}>
+                  <SidebarMenuSubButton
+                    asChild
+                    isActive={isActiveLink(location.pathname, subItem.path)}
+                  >
+                    <Link to={subItem.path} onClick={handleNavigationClick}>
+                      <subItem.icon className="h-4 w-4" />
+                      <span>{subItem.title}</span>
+                    </Link>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              ))}
+            </SidebarMenuSub>
+          </CollapsibleContent>
+        </Collapsible>
+      );
+    }
+
+    // Simple menu item without subitems
+    return (
+      <SidebarMenuButton
+        asChild
+        isActive={isActive}
+      >
+        <Link to={item.path} onClick={handleNavigationClick} className="flex items-center space-x-2">
+          <item.icon className="h-4 w-4" />
+          <span>{item.title}</span>
+        </Link>
+      </SidebarMenuButton>
+    );
   };
 
   return (
@@ -130,7 +241,7 @@ export const AppSidebar: React.FC = () => {
           </div>
         )}
       </SidebarHeader>
-      
+
       <SidebarContent>
         <SidebarGroup>
           {/* Show label on mobile or when expanded */}
@@ -146,7 +257,7 @@ export const AppSidebar: React.FC = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      
+
       <SidebarFooter className="border-t">
         <SidebarMenu>
           {settingsItem && (
@@ -157,16 +268,18 @@ export const AppSidebar: React.FC = () => {
           <SidebarMenuItem>
             {/* Show separator on mobile or when expanded */}
             {(isMobile || state === 'expanded') && <Separator className="my-2" />}
-            
+
             {/* Logout button with proper mobile/desktop handling */}
             {(!isMobile && state === 'collapsed') ? (
               // Collapsed desktop version with tooltip
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button 
-                      variant="ghost" 
-                      onClick={logout}
+                    <Button
+                      variant="ghost"
+                      onClick={() => {
+                        logout();
+                      }}
                       className="w-full justify-center text-sm font-normal hover:text-destructive p-2"
                     >
                       <LogOut className="h-4 w-4" />
@@ -179,9 +292,11 @@ export const AppSidebar: React.FC = () => {
               </TooltipProvider>
             ) : (
               // Mobile or expanded desktop version with text
-              <Button 
-                variant="ghost" 
-                onClick={logout}
+              <Button
+                variant="ghost"
+                onClick={() => {
+                        logout();
+                      }}
                 className="w-full justify-start text-sm font-normal hover:text-destructive"
               >
                 <LogOut className="mr-2 h-4 w-4" />

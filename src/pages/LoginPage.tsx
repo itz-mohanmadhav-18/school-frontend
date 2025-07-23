@@ -25,9 +25,9 @@ export const LoginPage: React.FC = () => {
         <div className="text-center">
           <h2 className="text-3xl font-bold">Welcome Back</h2>
           <p className="text-muted-foreground mt-2">Sign in to your account</p>
-          <p className="text-sm text-gray-500 mt-2">
+          {/* <p className="text-sm text-gray-500 mt-2">
             Will redirect to: {from}
-          </p>
+          </p> */}
         </div>
         <Button onClick={handleLogin} className="w-full">
           Login (Dummy)

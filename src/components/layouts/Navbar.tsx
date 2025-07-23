@@ -7,6 +7,7 @@ import { useSidebar } from '@/components/ui/sidebar';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { PanelLeft } from 'lucide-react';
+import { ModeToggle } from '@/components/mode-toggle';
 
 // Utility function to get page title
 const getCurrentPageTitle = (currentPath: string, navigationItems: any[]): string => {
@@ -53,14 +54,16 @@ export const Navbar: React.FC = () => {
             )}
             <div className="flex flex-col">
               <h1 className="text-xl font-semibold tracking-tight">{pageTitle}</h1>
-              <p className="text-sm text-muted-foreground">
+              {/* <p className="text-sm text-muted-foreground">
                 Welcome back, {user.name}
-              </p>
+              </p> */}
             </div>
           </div>
 
           {/* Right side - User info and avatar */}
           <div className="flex items-center gap-4">
+            <ModeToggle />
+            <Separator orientation="vertical" className="h-6 hidden md:block" />
             <div className="hidden md:flex flex-col items-end text-sm">
               <span className="font-medium">{user.name}</span>
               <span className="text-muted-foreground text-xs">{user.email}</span>
