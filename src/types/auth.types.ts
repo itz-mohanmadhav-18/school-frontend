@@ -8,7 +8,8 @@ export interface User {
 export interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: () => void;
+  login: (role?: string,sessionHours?: number) => void;
   logout: () => void;
   isLoading: boolean;
+  isLoggingOut:boolean;
 }
