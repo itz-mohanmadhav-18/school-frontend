@@ -4,8 +4,15 @@ import {
   Edit,
   List,
   Eye,
+  Lock,
   UserPlus,
-  BookPlus,
+  Shield,
+  Percent,
+  Globe,
+  AlertCircle,
+  Key,
+  Database,
+  Cog,
   CalendarPlus,
   Home,
   BookOpen,
@@ -60,74 +67,191 @@ export interface NavigationItem {
 // Admin Navigation with subroutes
 export const adminNavigation: NavigationItem[] = [
   { title: "Dashboard", path: "/dashboard", icon: Home },
+  
+  // Student Management - HIGHEST PRIORITY (Core Operations)
   {
-    title: "Students",
+    title: "Student Management",
     path: "/students",
     icon: Users,
     subItems: [
       { title: "All Students", path: "/students", icon: List },
-      { title: "Add Student", path: "/students/add", icon: UserPlus },
-      { title: "Student Info", path: "/students/info", icon: Info },
-      { title: "Manage Enrollment", path: "/students/enrollment", icon: Edit },
+      { title: "Search Students", path: "/students/search", icon: Search },
+      { title: "Admit Student", path: "/students/admit", icon: UserPlus },
+      { title: "Student Records", path: "/students/records", icon: FileText },
+      { title: "Promote Students", path: "/students/promote", icon: TrendingUp },
+      { title: "Transfer Students", path: "/students/transfer", icon: Send },
     ]
   },
+  
+  // Staff Management - HIGHEST PRIORITY (Core Operations)
   {
-    title: "Teachers",
-    path: "/teachers",
+    title: "Staff Management",
+    path: "/staff",
     icon: GraduationCap,
     subItems: [
-      { title: "All Teachers", path: "/teachers", icon: List },
-      { title: "Add Teacher", path: "/teachers/add", icon: UserPlus },
-      { title: "Teacher Info", path: "/teachers/info", icon: Info },
-      { title: "Assign Classes", path: "/teachers/assign-classes", icon: BookOpen },
-      { title: "Teacher Performance", path: "/teachers/performance", icon: BarChart3 },
+      { title: "All Staff", path: "/staff", icon: List },
+      { title: "Search Staff", path: "/staff/search", icon: Search },
+      { title: "Add Staff", path: "/staff/add", icon: UserPlus },
+      { title: "Assign Class", path: "/staff/assign-class", icon: BookOpen },
+      { title: "Staff Attendance", path: "/staff/attendance", icon: UserCheck },
+      { title: "Leave Approval", path: "/staff/leave-approval", icon: Send },
+      { title: "Staff Performance", path: "/staff/performance", icon: BarChart3 },
     ]
   },
+  
+  // Academic Management - HIGH PRIORITY (Academic Operations)
   {
-    title: "Courses",
-    path: "/courses",
-    icon: BookOpen,
+    title: "Academic Management",
+    path: "/academic",
+    icon: BookMarked,
     subItems: [
-      { title: "All Courses", path: "/courses", icon: List },
-      { title: "Add Course", path: "/courses/add", icon: BookPlus },
-      { title: "Course Details", path: "/courses/details", icon: Info },
-      { title: "Assign Teachers", path: "/courses/assign-teachers", icon: Users },
-      { title: "Course Materials", path: "/courses/materials", icon: FileText },
+      { title: "Classes & Sections", path: "/academic/classes", icon: Users },
+      { title: "Subjects Management", path: "/academic/subjects", icon: BookOpen },
+      { title: "Curriculum Planning", path: "/academic/curriculum", icon: Calendar },
+      { title: "Exam Management", path: "/academic/exams", icon: Award },
+      { title: "Grade Configuration", path: "/academic/grades", icon: Settings },
+      { title: "Academic Reports", path: "/academic/reports", icon: FileText },
     ]
   },
+  
+  // Calendar Management - HIGH PRIORITY (School Operations)
   {
-    title: "Schedule",
-    path: "/schedule",
+    title: "Calendar Management",
+    path: "/calendar",
     icon: Calendar,
     subItems: [
-      { title: "View Schedule", path: "/schedule", icon: Eye },
-      { title: "Create Schedule", path: "/schedule/create", icon: CalendarPlus },
-      { title: "Manage Timetable", path: "/schedule/timetable", icon: Edit },
-      { title: "Room Allocation", path: "/schedule/rooms", icon: Settings },
+      { title: "Academic Calendar", path: "/calendar/academic", icon: BookMarked },
+      { title: "Exam Calendar", path: "/calendar/exam", icon: CalendarX },
+      { title: "Event Calendar", path: "/calendar/event", icon: CalendarDays },
+      { title: "Holiday Management", path: "/calendar/holidays", icon: Calendar },
+      { title: "PTM Schedule", path: "/calendar/ptm", icon: Users },
+      { title: "School Hours", path: "/calendar/hours", icon: Clock },
     ]
   },
+  
+  // Communication - HIGH PRIORITY (Daily Operations)
   {
-    title: "Reports",
+    title: "Communication",
+    path: "/notices",
+    icon: MessageSquare,
+    subItems: [
+      { title: "Notice Center", path: "/notices", icon: MessageSquare },
+      { title: "School-wide Notice", path: "/notices/school-wide", icon: Globe },
+      { title: "Class-wide Notice", path: "/notices/class-wide", icon: Users },
+      { title: "To Parents", path: "/notices/parents", icon: Heart },
+      { title: "To Teachers", path: "/notices/teachers", icon: GraduationCap },
+      { title: "SMS/Email Alerts", path: "/notices/alerts", icon: Bell },
+      { title: "Notice Templates", path: "/notices/templates", icon: FileText },
+    ]
+  },
+  
+  // Fees Management - MEDIUM-HIGH PRIORITY (Financial Operations)
+  {
+    title: "Fees Management",
+    path: "/fees",
+    icon: DollarSign,
+    subItems: [
+      { title: "Fee Structure", path: "/fees/structure", icon: FileText },
+      { title: "Collect Fees", path: "/fees/deposit", icon: CreditCard },
+      { title: "Pending Dues", path: "/fees/pending", icon: AlertCircle },
+      { title: "Fee Reports", path: "/fees/reports", icon: BarChart3 },
+      { title: "Concessions", path: "/fees/concession", icon: Percent },
+      { title: "Fee Categories", path: "/fees/categories", icon: List },
+      { title: "Payment History", path: "/fees/history", icon: History },
+    ]
+  },
+  
+  // Attendance & Discipline - MEDIUM-HIGH PRIORITY (Daily Monitoring)
+  {
+    title: "Attendance & Discipline",
+    path: "/attendance",
+    icon: UserCheck,
+    subItems: [
+      { title: "Student Attendance", path: "/attendance/students", icon: Users },
+      { title: "Staff Attendance", path: "/attendance/staff", icon: GraduationCap },
+      { title: "Attendance Reports", path: "/attendance/reports", icon: FileText },
+      { title: "Manage Watchlist", path: "/watchlist", icon: Eye },
+      { title: "Disciplinary Actions", path: "/discipline/actions", icon: AlertTriangle },
+      { title: "Incident Reports", path: "/discipline/incidents", icon: FileX },
+    ]
+  },
+  
+  // Transport Management - MEDIUM PRIORITY (Operations)
+  {
+    title: "Transport Management",
+    path: "/transport",
+    icon: Bus,
+    subItems: [
+      { title: "Bus Routes", path: "/transport/routes", icon: MapPin },
+      { title: "Track Buses", path: "/transport/track", icon: Eye },
+      { title: "Transport Staff", path: "/transport/staff", icon: Users },
+      { title: "Vehicle Management", path: "/transport/vehicles", icon: Settings },
+      { title: "Route Allocation", path: "/transport/allocation", icon: Users },
+      { title: "Transport Fees", path: "/transport/fees", icon: DollarSign },
+    ]
+  },
+  
+  // Inventory & Resources - MEDIUM PRIORITY (Resource Management)
+  {
+    title: "Inventory & Resources",
+    path: "/inventory",
+    icon: Library,
+    subItems: [
+      { title: "Library Management", path: "/inventory/library", icon: Library },
+      { title: "Lab Equipment", path: "/inventory/lab", icon: Activity },
+      { title: "Sports Equipment", path: "/inventory/sports", icon: Award },
+      { title: "Classroom Resources", path: "/inventory/classroom", icon: BookOpen },
+      { title: "Maintenance Requests", path: "/inventory/maintenance", icon: Settings },
+      { title: "Asset Tracking", path: "/inventory/assets", icon: List },
+    ]
+  },
+  
+  // Reports & Analytics - MEDIUM PRIORITY (Analysis & Planning)
+  {
+    title: "Reports & Analytics",
     path: "/reports",
     icon: BarChart3,
     subItems: [
-      { title: "Academic Reports", path: "/reports/academic", icon: FileText },
+      { title: "Academic Performance", path: "/reports/academic", icon: TrendingUp },
       { title: "Attendance Reports", path: "/reports/attendance", icon: UserCheck },
-      { title: "Performance Analytics", path: "/reports/performance", icon: BarChart3 },
-      { title: "Financial Reports", path: "/reports/financial", icon: Download },
+      { title: "Financial Reports", path: "/reports/financial", icon: DollarSign },
+      { title: "Staff Performance", path: "/reports/staff", icon: GraduationCap },
+      { title: "Student Analytics", path: "/reports/students", icon: Users },
+      { title: "Custom Reports", path: "/reports/custom", icon: FileText },
+      { title: "Export Data", path: "/reports/export", icon: Download },
     ]
   },
+  
+  // User Management - LOWER-MEDIUM PRIORITY (Admin Functions)
   {
-    title: "Assignments",
-    path: "/assignments",
-    icon: FileText,
+    title: "User Management",
+    path: "/users",
+    icon: Settings,
     subItems: [
-      { title: "All Assignments", path: "/assignments", icon: List },
-      { title: "Assignment Overview", path: "/assignments/overview", icon: Eye },
-      { title: "Grade Management", path: "/assignments/grades", icon: Award },
-      { title: "Assignment Analytics", path: "/assignments/analytics", icon: BarChart3 },
+      { title: "User Accounts", path: "/users/accounts", icon: Users },
+      { title: "Role Management", path: "/users/roles", icon: Shield },
+      { title: "Permissions", path: "/users/permissions", icon: Lock },
+      { title: "Parent Accounts", path: "/users/parents", icon: Heart },
+      { title: "Password Reset", path: "/users/password-reset", icon: Key },
+      { title: "Account Activation", path: "/users/activation", icon: UserCheck },
     ]
   },
+  
+  // System Configuration - LOWER PRIORITY (Setup & Maintenance)
+  {
+    title: "System Configuration",
+    path: "/system",
+    icon: Cog,
+    subItems: [
+      { title: "School Information", path: "/system/school-info", icon: Info },
+      { title: "Academic Year", path: "/system/academic-year", icon: Calendar },
+      { title: "Class Configuration", path: "/system/class-config", icon: Settings },
+      { title: "Backup & Restore", path: "/system/backup", icon: Database },
+      { title: "System Logs", path: "/system/logs", icon: FileText },
+      { title: "Security Settings", path: "/system/security", icon: Shield },
+    ]
+  },
+  
   { title: "Settings", path: "/settings", icon: Settings },
 ];
 
