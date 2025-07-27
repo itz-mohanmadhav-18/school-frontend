@@ -8,13 +8,13 @@ import { ThemeProvider } from '@/components/theme-provider';
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <AuthProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <BrowserRouter>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <BrowserRouter>
+          <AuthProvider>
             <AppRoutes />
-          </BrowserRouter>
-        </ThemeProvider>
-      </AuthProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
