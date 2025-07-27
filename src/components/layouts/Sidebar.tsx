@@ -18,7 +18,6 @@ import {
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   Collapsible,
@@ -27,7 +26,9 @@ import {
 } from '@/components/ui/collapsible';
 import { useAuth } from '@/hooks/useAuth';
 import { getNavigationByRole, type NavigationItem } from '@/routes/navigationConfig';
-import { ChevronDown, ChevronRight, GraduationCap, LogOut } from 'lucide-react';
+import { ChevronDown, ChevronRight, GraduationCap, Loader2, LogOut } from 'lucide-react';
+import { useLogout } from '@/hooks/useLogout';
+
 
 // Utility function for active link detection
 const isActiveLink = (currentPath: string, targetPath: string): boolean => {
@@ -54,7 +55,8 @@ const hasActiveSubItem = (item: NavigationItem, currentPath: string): boolean =>
 
 export const AppSidebar: React.FC = () => {
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
+  const { handleLogout, isLoggingOut } = useLogout();
   const { state, isMobile, toggleSidebar, setOpenMobile } = useSidebar();
   // Changed from array to single string to only allow one expanded item
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
@@ -79,9 +81,12 @@ export const AppSidebar: React.FC = () => {
   };
 
   // Helper component for menu items with tooltips when collapsed
+  // ...existing code...
+
+  // Helper component for menu items with tooltips when collapsed
   const MenuItem = ({ item }: { item: NavigationItem }) => {
     const hasSubItems = item.subItems && item.subItems.length > 0;
-    const isExpanded = expandedItem === item.path; // Changed condition
+    const isExpanded = expandedItem === item.path;
     const isActive = isActiveLink(location.pathname, item.path);
     const hasActiveSub = hasActiveSubItem(item, location.pathname);
 
@@ -147,18 +152,20 @@ export const AppSidebar: React.FC = () => {
         >
           <CollapsibleTrigger asChild>
             <SidebarMenuButton
-              className="w-full justify-between"
               isActive={isActive || hasActiveSub}
+              className="w-full"
             >
-              <div className="flex items-center space-x-2">
-                <item.icon className="h-4 w-4" />
-                <span>{item.title}</span>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center space-x-2">
+                  <item.icon className="h-4 w-4" />
+                  <span>{item.title}</span>
+                </div>
+                {isExpanded ? (
+                  <ChevronDown className="h-4 w-4 shrink-0" />
+                ) : (
+                  <ChevronRight className="h-4 w-4 shrink-0" />
+                )}
               </div>
-              {isExpanded ? (
-                <ChevronDown className="h-4 w-4" />
-              ) : (
-                <ChevronRight className="h-4 w-4" />
-              )}
             </SidebarMenuButton>
           </CollapsibleTrigger>
           <CollapsibleContent>
@@ -187,14 +194,23 @@ export const AppSidebar: React.FC = () => {
       <SidebarMenuButton
         asChild
         isActive={isActive}
+        className="w-full"
       >
-        <Link to={item.path} onClick={handleNavigationClick} className="flex items-center space-x-2">
-          <item.icon className="h-4 w-4" />
-          <span>{item.title}</span>
+        <Link to={item.path} onClick={handleNavigationClick}>
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center space-x-2">
+              <item.icon className="h-4 w-4" />
+              <span>{item.title}</span>
+            </div>
+            {/* Empty div to maintain consistent spacing */}
+            <div className="h-4 w-4 shrink-0" />
+          </div>
         </Link>
       </SidebarMenuButton>
     );
   };
+
+  // ...existing code...
 
   return (
     <Sidebar className="border-r" collapsible="icon">
@@ -209,14 +225,11 @@ export const AppSidebar: React.FC = () => {
               </div>
               <div className="flex flex-col">
                 <h1 className="text-lg font-semibold">School App</h1>
-                <Badge variant="outline" className="w-fit text-xs">
-                  {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-                </Badge>
               </div>
             </div>
-            <div className="px-2 pb-2">
-              <p className="text-sm text-muted-foreground">Welcome, {user.name}</p>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Welcome, {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+            </p>
           </>
         ) : (
           // Clickable chevron for collapsed desktop - maintains spacing
@@ -277,16 +290,19 @@ export const AppSidebar: React.FC = () => {
                   <TooltipTrigger asChild>
                     <Button
                       variant="ghost"
-                      onClick={() => {
-                        logout();
-                      }}
+                      onClick={handleLogout}
+                      disabled={isLoggingOut}
                       className="w-full justify-center text-sm font-normal hover:text-destructive p-2"
                     >
-                      <LogOut className="h-4 w-4" />
+                      {isLoggingOut ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <LogOut className="h-4 w-4" />
+                      )}
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent side="right" className="font-medium">
-                    Logout
+                    {isLoggingOut ? 'Logging out ....' : 'Logout'}
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -294,13 +310,16 @@ export const AppSidebar: React.FC = () => {
               // Mobile or expanded desktop version with text
               <Button
                 variant="ghost"
-                onClick={() => {
-                        logout();
-                      }}
+                onClick={handleLogout}
+                disabled={isLoggingOut}
                 className="w-full justify-start text-sm font-normal hover:text-destructive"
               >
-                <LogOut className="mr-2 h-4 w-4" />
-                Logout
+                {isLoggingOut ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <LogOut className="mr-2 h-4 w-4" />
+                )}
+                {isLoggingOut ? 'Logging out...' : 'Logout'}
               </Button>
             )}
           </SidebarMenuItem>
