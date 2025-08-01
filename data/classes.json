@@ -1,0 +1,412 @@
+[
+  {
+    "class_id": "CLS001",
+    "school_id": "SCH001",
+    "grade": "Nursery",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T002",
+    "subjects": [
+      {"subject": "English", "teacherId": "T002"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S052", "S053", "S062", "S080", "S084", "S085"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS019",
+    "school_id": "SCH001",
+    "grade": "Nursery",
+    "section": "B",
+    "academic_year": "2025-26",
+    "classTeacherId": "T002",
+    "subjects": [
+      {"subject": "English", "teacherId": "T002"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S141", "S142", "S143", "S144", "S145"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS020",
+    "school_id": "SCH001",
+    "grade": "Nursery",
+    "section": "C",
+    "academic_year": "2025-26",
+    "classTeacherId": "T002",
+    "subjects": [
+      {"subject": "English", "teacherId": "T002"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S157", "S158", "S171", "S172"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS002",
+    "school_id": "SCH001",
+    "grade": "LKG",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T004",
+    "subjects": [
+      {"subject": "English", "teacherId": "T004"},
+      {"subject": "Math", "teacherId": "T028"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S001", "S003", "S004", "S054", "S094", "S103"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS021",
+    "school_id": "SCH001",
+    "grade": "LKG",
+    "section": "B",
+    "academic_year": "2025-26",
+    "classTeacherId": "T004",
+    "subjects": [
+      {"subject": "English", "teacherId": "T004"},
+      {"subject": "Math", "teacherId": "T028"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S146", "S147", "S148", "S149", "S150"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS022",
+    "school_id": "SCH001",
+    "grade": "LKG",
+    "section": "C",
+    "academic_year": "2025-26",
+    "classTeacherId": "T004",
+    "subjects": [
+      {"subject": "English", "teacherId": "T004"},
+      {"subject": "Math", "teacherId": "T028"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S159", "S173", "S174"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS003",
+    "school_id": "SCH001",
+    "grade": "UKG",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T005",
+    "subjects": [
+      {"subject": "English", "teacherId": "T005"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"}
+    ],
+    "students": ["S009", "S013", "S020", "S021", "S027", "S049", "S076", "S091", "S105", "S108", "S110", "S119"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS023",
+    "school_id": "SCH001",
+    "grade": "UKG",
+    "section": "B",
+    "academic_year": "2025-26",
+    "classTeacherId": "T005",
+    "subjects": [
+      {"subject": "English", "teacherId": "T005"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"}
+    ],
+    "students": ["S151", "S152", "S153", "S154", "S155", "S156"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS024",
+    "school_id": "SCH001",
+    "grade": "UKG",
+    "section": "C",
+    "academic_year": "2025-26",
+    "classTeacherId": "T005",
+    "subjects": [
+      {"subject": "English", "teacherId": "T005"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"}
+    ],
+    "students": ["S160", "S161", "S162", "S163"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS004",
+    "school_id": "SCH001",
+    "grade": "1st",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T003",
+    "subjects": [
+      {"subject": "English", "teacherId": "T003"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S002", "S005", "S006", "S011", "S014", "S073", "S075"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS025",
+    "school_id": "SCH001",
+    "grade": "1st",
+    "section": "B",
+    "academic_year": "2025-26",
+    "classTeacherId": "T003",
+    "subjects": [
+      {"subject": "English", "teacherId": "T003"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S164", "S165", "S166", "S167", "S168"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS026",
+    "school_id": "SCH001",
+    "grade": "1st",
+    "section": "C",
+    "academic_year": "2025-26",
+    "classTeacherId": "T003",
+    "subjects": [
+      {"subject": "English", "teacherId": "T003"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Art", "teacherId": "T037"}
+    ],
+    "students": ["S175", "S176", "S177"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS005",
+    "school_id": "SCH001",
+    "grade": "2nd",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T012",
+    "subjects": [
+      {"subject": "English", "teacherId": "T003"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T012"}
+    ],
+    "students": ["S007", "S034", "S036", "S056", "S060", "S065", "S069", "S082"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS027",
+    "school_id": "SCH001",
+    "grade": "2nd",
+    "section": "B",
+    "academic_year": "2025-26",
+    "classTeacherId": "T012",
+    "subjects": [
+      {"subject": "English", "teacherId": "T003"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T012"}
+    ],
+    "students": ["S169", "S170", "S178", "S179", "S180"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS006",
+    "school_id": "SCH001",
+    "grade": "3rd",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T011",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T059"}
+    ],
+    "students": ["S025", "S031", "S032", "S033", "S035", "S037", "S041", "S055", "S057", "S086", "S092", "S093", "S096", "S098", "S100", "S101", "S102", "S118", "S120"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS007",
+    "school_id": "SCH001",
+    "grade": "4th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T017",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T017"}
+    ],
+    "students": ["S016", "S018", "S019", "S022", "S026", "S068", "S097"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS008",
+    "school_id": "SCH001",
+    "grade": "5th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T042",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T042"}
+    ],
+    "students": ["S045", "S046", "S047", "S051", "S059", "S061", "S064", "S066", "S071", "S072", "S077", "S079"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS009",
+    "school_id": "SCH001",
+    "grade": "6th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T054",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T054"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S010", "S017", "S029", "S030", "S038", "S039", "S050", "S058", "S067", "S074", "S078", "S087", "S088", "S089", "S090", "S107", "S115", "S116"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS010",
+    "school_id": "SCH001",
+    "grade": "7th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T039",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T039"},
+      {"subject": "Computer Science", "teacherId": "T036"}
+    ],
+    "students": ["S012", "S015", "S023", "S024", "S028", "S040", "S042", "S043", "S044", "S048", "S070", "S081", "S083", "S095", "S099", "S104", "S106", "S109", "S111", "S112", "S113", "S114", "S117"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS011",
+    "school_id": "SCH001",
+    "grade": "8th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T048",
+    "subjects": [
+      {"subject": "English", "teacherId": "T011"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T048"},
+      {"subject": "Computer Science", "teacherId": "T036"}
+    ],
+    "students": ["S008", "S063"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS012",
+    "school_id": "SCH001",
+    "grade": "9th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T014",
+    "subjects": [
+      {"subject": "English", "teacherId": "T014"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T059"},
+      {"subject": "Computer Science", "teacherId": "T036"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S121", "S122", "S123", "S124", "S125", "S126"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS013",
+    "school_id": "SCH001",
+    "grade": "10th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T010",
+    "subjects": [
+      {"subject": "English", "teacherId": "T014"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Science", "teacherId": "T058"},
+      {"subject": "Social Studies", "teacherId": "T010"},
+      {"subject": "Computer Science", "teacherId": "T036"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S127", "S128", "S129", "S130", "S133", "S135"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS014",
+    "school_id": "SCH001",
+    "grade": "11th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T033",
+    "subjects": [
+      {"subject": "English", "teacherId": "T033"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Physics", "teacherId": "T058"},
+      {"subject": "Chemistry", "teacherId": "T034"},
+      {"subject": "Computer Science", "teacherId": "T036"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S131", "S132", "S134", "S136", "S139"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  },
+  {
+    "class_id": "CLS015",
+    "school_id": "SCH001",
+    "grade": "12th",
+    "section": "A",
+    "academic_year": "2025-26",
+    "classTeacherId": "T056",
+    "subjects": [
+      {"subject": "English", "teacherId": "T056"},
+      {"subject": "Math", "teacherId": "T055"},
+      {"subject": "Physics", "teacherId": "T058"},
+      {"subject": "Chemistry", "teacherId": "T034"},
+      {"subject": "Computer Science", "teacherId": "T036"},
+      {"subject": "Physical Education", "teacherId": "T037"}
+    ],
+    "students": ["S137", "S138", "S140"],
+    "created_at": "2025-01-15T10:00:00Z",
+    "updated_at": "2025-01-15T10:00:00Z"
+  }
+]
