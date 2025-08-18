@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useLogout } from '@/hooks/useLogout';
+import { useNavigate } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,6 +16,7 @@ import { LogOut, User, Settings, Loader2 } from 'lucide-react';
 export const UserAvatar: React.FC = () => {
   const { user } = useAuth();
   const { handleLogout, isLoggingOut } = useLogout();
+  const navigate = useNavigate();
 
   if (!user) return null;
 
@@ -25,6 +27,14 @@ export const UserAvatar: React.FC = () => {
       .join('')
       .toUpperCase()
       .slice(0, 2);
+  };
+
+  const handleProfileClick = () => {
+    navigate('/profile');
+  };
+
+  const handleSettingsClick = () => {
+    navigate('/settings');
   };
 
   return (
@@ -46,19 +56,19 @@ export const UserAvatar: React.FC = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer" onClick={handleProfileClick}>
           <User className="mr-2 h-4 w-4" />
           <span>Profile</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer" onClick={handleSettingsClick}>
           <Settings className="mr-2 h-4 w-4" />
           <span>Settings</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem 
-          onClick={handleLogout} 
+          className="cursor-pointer text-red-600 focus:text-red-600" 
+          onClick={handleLogout}
           disabled={isLoggingOut}
-          className="cursor-pointer text-destructive focus:text-destructive"
         >
           {isLoggingOut ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
