@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import { DashBoardPage } from "@/pages/DashBoardPage";
+import { ProfilePage } from "@/pages/ProfilePage";
 
 // Schedule Components
 const StudentTimetablePage = () => <div className="p-6"><h1 className="text-2xl font-bold">Student - Class Timetable</h1><p>View your class schedule</p></div>;
@@ -86,6 +87,8 @@ export const studentRoutes = [
   <Route key="support-counselling-reports" path="support/counselling/reports" element={<StudentCounsellingReportsPage />} />,
   <Route key="support-medical" path="support/medical" element={<StudentMedicalSupportPage />} />,
   <Route key="support-health-records" path="support/health-records" element={<StudentHealthRecordsPage />} />,
+
+  <Route key="profile" path="profile" element = {<ProfilePage/>} />,
   
   <Route key="settings" path="settings" element={<StudentSettingsPage />} />,
 ];

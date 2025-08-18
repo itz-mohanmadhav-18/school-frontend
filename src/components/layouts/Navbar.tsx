@@ -16,7 +16,7 @@ const getCurrentPageTitle = (currentPath: string, navigationItems: any[]): strin
     if (targetPath === currentPath) return true;
     if (targetPath !== '/' && currentPath.startsWith(targetPath)) return true;
     return false;
-  };
+  };     
 
   const item = navigationItems.find(item => isActiveLink(currentPath, item.path));
   return item?.title || 'Dashboard';
